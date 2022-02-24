@@ -1,32 +1,36 @@
 package co.com.sofka.crud.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
-public class Todo {
+public class TodoList {
     //-------------------------------------------------//
     //Atributos
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private boolean completed;
-    private String groupListId;
 
-    @ManyToOne
-    @JoinColumn(name = "list_to_id")
-    private TodoList todoList;
+    @OneToMany(mappedBy = "todoList")
+    private List<Todo> todoList;
     //-------------------------------------------------//
 
     //-------------------------------------------------//
-    //Metodos
-    public String getGroupListId() {
-        return groupListId;
+    //Constructores
+    public TodoList() {//Por defecto
     }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
+    public TodoList(String name) {
+        this.name = name;
     }
+    //-------------------------------------------------//
+
+    //-------------------------------------------------//
+    //Getters & Setters
 
     public Long getId() {
         return id;
@@ -44,13 +48,7 @@ public class Todo {
         this.name = name;
     }
 
-    public boolean isCompleted() {
-        return completed;
-    }
-
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
     //-------------------------------------------------//
+
 
 }
