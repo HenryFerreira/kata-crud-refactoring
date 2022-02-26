@@ -1,14 +1,22 @@
+//--------------------------------------------------------------//
+//Importaciones
 import React, { useContext, useEffect } from 'react';
 import Form from '../itemTodo/From';
 import List from '../itemTodo/List';
 import Store from '../utils/StoreProvider';
-const HOST_API ="http://localhost:8080/api";
-
+//--------------------------------------------------------------//
 
 export default () => {
+    //--------------------------------------------------------//
+    //Constantes
     const { state: { todoList }, dispatch } = useContext(Store);
     const currentList = todoList.list;
+    const HOST_API ="http://localhost:8080/api";
+    //--------------------------------------------------------//
 
+
+    //--------------------------------------------------------//
+    //Obtiene los 'todoList' de la base de datos
     useEffect(() => {
         fetch(HOST_API + "/todoList")
         .then((response) => response.json())
@@ -16,7 +24,10 @@ export default () => {
             dispatch({ type: "update-list-group", list });
         });
     }, [dispatch]);
+    //--------------------------------------------------------//
     
+    //--------------------------------------------------------//
+    //Elimina el 'todoList' seleccionado
     const onDelete = (todoListId) => {
         fetch(HOST_API + "/todoList/" + todoListId, {
             method: "DELETE",
@@ -24,7 +35,10 @@ export default () => {
             dispatch({ type: "delete-group", todoListId });
           });
     }
+    //--------------------------------------------------------//
 
+    //--------------------------------------------------------//
+    //Devuelve el HTML del 'ViewTodoList'
     return (
         <div>
             {currentList.map((todoList) => {
@@ -45,4 +59,5 @@ export default () => {
             })}
         </div>
     )
+    //--------------------------------------------------------//
 }

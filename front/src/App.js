@@ -3,7 +3,7 @@
 import React from 'react';
 import { StoreProvider } from './components/utils/StoreProvider';
 import FormTodoList from './components/listTodo/FormTodoList';
-import ListTodoView from './components/listTodo/ListTodoView';
+import ViewTodoList from './components/listTodo/ViewTodoList';
 //---------------------------------------------------------------------//
 
 //---------------------------------------------------------------------//
@@ -13,7 +13,7 @@ function App() {
     <StoreProvider>
       <h3>ToDo</h3>
       <FormTodoList/>
-      <ListTodoView/>
+      <ViewTodoList/>
     </StoreProvider>
   );
 }

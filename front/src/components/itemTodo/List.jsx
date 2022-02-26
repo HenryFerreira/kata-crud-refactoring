@@ -2,22 +2,22 @@
 //Importaciones
 import React, { useContext, useEffect } from 'react';
 import Store from '../utils/StoreProvider';
-const HOST_API ="http://localhost:8080/api";
 //---------------------------------------------------------------------//
 
 
 export default (props) => {
   //----------------------------------------------------//
-  //Hooks
+  //Constantes
   const { dispatch, state: { todo } } = useContext(Store);
   const currentList = todo.list.filter(todo => {
-    console.log(todo.name +" " +todo.todoList +"----"+props.todoListId)
     return todo.todoList === props.todoListId;
   })
+  const HOST_API ="http://localhost:8080/api";
   //----------------------------------------------------//
 
 
   //----------------------------------------------------//
+  //Obtener los 'todos' desde la base de datos y ponerlos en pantalla
   useEffect(() => {
     fetch(HOST_API + "/todos")
       .then((response) => response.json())
@@ -28,7 +28,7 @@ export default (props) => {
   //----------------------------------------------------//
 
   //----------------------------------------------------//
-  //Función de eliminar
+  //Eliminar el 'todo' seleccionado de la 'todoList'
   const onDelete = (todoListId) => {
     fetch(HOST_API + "/todo/" + todoListId, {
       method: "DELETE",
@@ -39,13 +39,14 @@ export default (props) => {
   //----------------------------------------------------//
 
   //----------------------------------------------------//
-  //Función de editar
+  //Editar el 'todo'seleccionado
   const onEdit = (todo) => {
     dispatch({ type: "edit-item", item: todo });
   };
   //----------------------------------------------------//
 
   //----------------------------------------------------//
+  //Modifica la información del 'todo' seleccionado
   const onChange = (event, todo) => {
     const request = {
       name: todo.name,
@@ -67,6 +68,7 @@ export default (props) => {
   //----------------------------------------------------//
 
   //----------------------------------------------------//
+  //Linea que marca el 'todo' ya realizado
   const decorationDone = {
     textDecoration: 'line-through'
   };
@@ -74,7 +76,7 @@ export default (props) => {
 
 
   //----------------------------------------------------//
-  //Se devuelve el List
+  //Se devuelve el HTML de List
   return (
    <div>
       <table>

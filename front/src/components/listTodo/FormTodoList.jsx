@@ -6,16 +6,19 @@ const HOST_API ="http://localhost:8080/api";
 //---------------------------------------------------------------------//
 
 export default () => {
+  //----------------------------------------------------//
+  //Constantes
   const formRef = useRef(null);
   const { dispatch, state: { todoList } } = useContext(Store);
   const item = todoList.item
   const [state, setState] = useState(item);
+  //----------------------------------------------------//
+
 
   //----------------------------------------------------//
-  //Función de añadir
+  //Crea el 'todoList' 
   const onCreate = (event) => {
     event.preventDefault();
-
     const request = {
         name: state.name,
         id: null
@@ -34,13 +37,11 @@ export default () => {
         setState({ name: "" });
         formRef.current.reset();
       })
-    
-
   };
   //----------------------------------------------------//
 
   //----------------------------------------------------//
-  //Se devuelve el FormTodoList
+  //Se devuelve el HTML del 'FormTodoList'
   return (
     <form ref={formRef}>
         <hr/>
