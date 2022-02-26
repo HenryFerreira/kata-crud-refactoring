@@ -53,7 +53,7 @@ export default (props) => {
       id: todo.id,
       completed: event.target.checked,
     };
-    fetch(HOST_API + "/todo/" + props.todoListId, {
+    fetch(HOST_API + "/todo/search/" + props.todoListId, {
       method: "PUT",
       body: JSON.stringify(request),
       headers: {
@@ -88,7 +88,6 @@ export default (props) => {
           </tr>
         </thead>
         <tbody>
-          {console.log(todo)}
           {currentList.map((todo) => {
             return (
               <tr key={todo.id} style={todo.completed ? decorationDone : {}}>
