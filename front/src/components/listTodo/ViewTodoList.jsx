@@ -29,7 +29,7 @@ export default () => {
     //--------------------------------------------------------//
     //Elimina el 'todoList' seleccionado
     const onDelete = (todoListId) => {
-        fetch(HOST_API + "/todo/" + todoListId, {
+        fetch(HOST_API + "/todoList/" + todoListId, {
             method: "DELETE",
           }).then((list) => {
             dispatch({ type: "delete-todoList", todoListId });
