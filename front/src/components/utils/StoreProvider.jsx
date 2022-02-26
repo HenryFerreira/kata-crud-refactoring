@@ -4,30 +4,31 @@ import React, { useReducer, createContext } from 'react';
 import reducer from './Reducer';
 //---------------------------------------------------------------------//
 
+
 //---------------------------------------------------------------------//
 //Constantes
-const HOST_API = "http://localhost:8080/api";
-const Store = createContext();
+const initialState = {
+    todoList: {
+        list: [],
+        item: {}
+    },
+    todo: {
+        list: [],
+        item: {}
+    }
+};
+const Store = createContext(initialState);
 
 //---------------------------------------------------------------------//
 //FUNCIÓN 'StoreProvider'
-const StoreProvider = ({ children }) => {
-
-    const initialState = {
-        todo: {
-            list: [],
-            item: {}
-        }
-    };
-
+export const StoreProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
-  
+
     return <Store.Provider value={{ state, dispatch }}>
         {children}
     </Store.Provider>
 }
 
 //Exportaciones
-export default StoreProvider;
-export {Store}
+export default Store;
 //---------------------------------------------------------------------//
