@@ -1,8 +1,8 @@
 //--------------------------------------------------------------//
 //Importaciones
 import React, { useContext, useEffect } from 'react';
-import Form from '../itemTodo/From';
-import List from '../itemTodo/List';
+import FormTodo from '../itemTodo/FromTodo';
+import ViewTodos from '../itemTodo/ViewTodos';
 import Store from '../utils/StoreProvider';
 //--------------------------------------------------------------//
 
@@ -51,8 +51,8 @@ export default () => {
                                 Eliminar
                                 </button>
                             </legend>
-                        {<Form todoListId={todoList.id } />}
-                        {<List todoListId={todoList.id } />}
+                        {<FormTodo todoListId={todoList.id } />}
+                        {<ViewTodos todoListId={todoList.id } />}
                         </fieldset>
                     </div>
                 );
