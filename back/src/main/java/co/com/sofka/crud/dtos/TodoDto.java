@@ -1,30 +1,47 @@
-package co.com.sofka.crud.models;
+package co.com.sofka.crud.dtos;
 
-import javax.persistence.*;
 
-@Entity
-public class Todo {
+
+public class TodoDto {
     //-------------------------------------------------//
     //Atributos
-    @Id
-    @GeneratedValue
     private Long id;
+    private Long todoList;
     private String name;
     private boolean completed;
+    //-------------------------------------------------//
 
-    @ManyToOne
-    @JoinColumn(name = "todoListId", referencedColumnName = "todoListId")
-    private TodoList todoList;
+    //-------------------------------------------------//
+    //Constructores
+
+    public TodoDto() {//Defecto
+    }
+
+    public TodoDto(Long id, Long todoList, String name, boolean completed) {
+        this.id = id;
+        this.todoList = todoList;
+        this.name = name;
+        this.completed = completed;
+    }
     //-------------------------------------------------//
 
     //-------------------------------------------------//
     //Getters & Setters
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getTodoList() {
+        return todoList;
+    }
+
+    public void setTodoList(Long todoList) {
+        this.todoList = todoList;
     }
 
     public String getName() {
@@ -42,14 +59,7 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
-    public TodoList getTodoList() {
-        return todoList;
-    }
-
-    public void setTodoList(TodoList todoList) {
-        this.todoList = todoList;
-    }
     //-------------------------------------------------//
+
 
 }

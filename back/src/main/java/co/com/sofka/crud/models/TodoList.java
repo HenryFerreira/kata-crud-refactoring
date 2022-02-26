@@ -1,5 +1,9 @@
 package co.com.sofka.crud.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -12,32 +16,24 @@ public class TodoList {
     //Atributos
     @Id
     @GeneratedValue
-    private Long id;
+    private Long todoListId;
     private String name;
 
     @OneToMany(mappedBy = "todoList")
+    @Cascade(CascadeType.DELETE)
+    @JsonIgnoreProperties("todoList")
     private List<Todo> todoList;
-    //-------------------------------------------------//
-
-    //-------------------------------------------------//
-    //Constructores
-    public TodoList() {//Por defecto
-    }
-
-    public TodoList(String name) {
-        this.name = name;
-    }
     //-------------------------------------------------//
 
     //-------------------------------------------------//
     //Getters & Setters
 
     public Long getId() {
-        return id;
+        return todoListId;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.todoListId = id;
     }
 
     public String getName() {
@@ -46,6 +42,14 @@ public class TodoList {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Todo> getTodoList() {
+        return todoList;
+    }
+
+    public void setTodoList(List<Todo> todoList) {
+        this.todoList = todoList;
     }
 
     //-------------------------------------------------//
