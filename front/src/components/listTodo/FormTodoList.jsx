@@ -32,8 +32,8 @@ export default () => {
       },
     })
       .then((response) => response.json())
-      .then((group) => {
-        dispatch({ type: "add-group", item: group });
+      .then((todoList) => {
+        dispatch({ type: "add-todoList", item: todoList });
         setState({ name: "" });
         formRef.current.reset();
       })

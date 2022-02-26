@@ -21,7 +21,7 @@ export default () => {
         fetch(HOST_API + "/todoList")
         .then((response) => response.json())
         .then((list) => {
-            dispatch({ type: "update-list-group", list });
+            dispatch({ type: "update-todoList", list });
         });
     }, [dispatch]);
     //--------------------------------------------------------//
@@ -32,7 +32,7 @@ export default () => {
         fetch(HOST_API + "/todoList/" + todoListId, {
             method: "DELETE",
           }).then((list) => {
-            dispatch({ type: "delete-group", todoListId });
+            dispatch({ type: "delete-todoList", todoListId });
           });
     }
     //--------------------------------------------------------//
