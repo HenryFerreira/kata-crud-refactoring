@@ -19,7 +19,24 @@ public class TodoController {
     public List<TodoDto> list(){
         return service.list();
     }
-    
+
+    @PostMapping("api/todo/{todoListId}")
+    public TodoDto setTodoById(@PathVariable("todoListId") Long todoListId, @RequestBody TodoDto todoDto){
+        return this.service.setTodoById(todoListId, todoDto);
+    }
+
+    @PutMapping("api/todo/search/{todoListId}")
+    public TodoDto updateTodoByTodoListId(@PathVariable("todoListId") Long todoListId,@RequestBody TodoDto element){
+        if(element.getId() != null){
+            return service.updateTodoByTodoListId(todoListId, element);
+        }
+        throw new RuntimeException("No existe el id para actualziar");
+    }
+
+    @DeleteMapping("api/todo/{todoListId}")
+    public void deleteTodoById(@PathVariable("todoListId") Long todoListId){
+        this.service.deleteTodoById(todoListId);
+    }
 
 
 }
