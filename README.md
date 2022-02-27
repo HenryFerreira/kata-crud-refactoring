@@ -1,3 +1,7 @@
+#Link al video:
+https://drive.google.com/file/d/15oOU4D2vz8Zt_t_eRoVCebyvL3Pk5ryT/view?usp=sharing
+
+
 # [Problema]
 
 Pueden ver los siguientes videos para poder comprender la base del código fuente dentro de este repositorio. 
